@@ -113,6 +113,18 @@
     return i;
   }
 
+  function open(rowIndex, cellIndex) {
+    const target = $tbody.children[rowIndex]?.children[cellIndex];
+    if (!target) {
+      return;
+    }
+    const count = countMine(rowIndex, cellIndex);
+    target.textContent = count || '';
+    target.className = 'opened';
+    data[rowIndex][cellIndex] = count;
+    return count;
+  }
+
   function onLeftClick(event) {
     const target = event.target; // td 태그
     const rowIndex = target.parentNode.rowIndex;

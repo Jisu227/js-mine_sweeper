@@ -99,6 +99,20 @@
     }
   }
 
+  function countMine(rowIndex, cellIndex) {
+    const mines = [CODE.MINE, CODE.QUESTION_MINE, CODE.FLAG_MINE];
+    let i = 0;
+    mines.includes(data[rowIndex - 1]?.[cellIndex - 1]) && i++;
+    mines.includes(data[rowIndex - 1]?.[cellIndex]) && i++;
+    mines.includes(data[rowIndex - 1]?.[cellIndex + 1]) && i++;
+    mines.includes(data[rowIndex][cellIndex - 1]) && i++;
+    mines.includes(data[rowIndex][cellIndex + 1]) && i++;
+    mines.includes(data[rowIndex + 1]?.[cellIndex - 1]) && i++;
+    mines.includes(data[rowIndex + 1]?.[cellIndex]) && i++;
+    mines.includes(data[rowIndex + 1]?.[cellIndex + 1]) && i++;
+    return i;
+  }
+
   function drawTable() {
     data = plantMine();
     data.forEach((row) => {

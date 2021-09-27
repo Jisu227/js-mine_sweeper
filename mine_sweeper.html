@@ -66,6 +66,22 @@
     return data;
   }
 
+  function drawTable() {
+    data = plantMine();
+    data.forEach((row) => {
+      const $tr = document.createElement('tr');
+      row.forEach((cell) => {
+        const $td = document.createElement('td');
+        if (cell === CODE.MINE) {
+          $td.textContent = 'X'; // 개발 편의를 위해 표시
+        }
+        $tr.append($td);
+      });
+      $tbody.append($tr);
+    })
+  }
+  drawTable();
+
   
 </script>  
 </body>
